@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 
 public class MainPage {
     public static String topOrderButton = "div[class*='Header_Nav'] [class*='Button']";
-    public static String bottomOrderButton = "div[class*='Header_Nav'] [class*='Button']";
+    public static String bottomOrderButton = "button[class*=Button_UltraBig]";
     private final WebDriver driver;
     private final By cookieButton = By.id("rcc-confirm-button");
     protected final By orderForm = By.className("Order_Form__17u6u");
