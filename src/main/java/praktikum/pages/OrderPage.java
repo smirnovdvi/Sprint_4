@@ -8,60 +8,27 @@ import praktikum.EnvConfig;
 
 import java.time.Duration;
 
-
-public class MainPage {
-    public static String topOrderButton = "div[class*='Header_Nav'] [class*='Button']";
-    public static String bottomOrderButton = "div[class*=Home_RoadMap] button[class*=Button_Button]";
+public class OrderPage {
     private final WebDriver driver;
-    private final By cookieButton = By.id("rcc-confirm-button");
-/*    protected final By orderForm = By.className("Order_Form__17u6u");
+    protected final By orderForm = By.className("Order_Form__17u6u");
     protected final By inputName = By.cssSelector("input[placeholder='* Имя']");
     protected final By inputSurname = By.cssSelector("input[placeholder='* Фамилия']");
     protected final By inputAddress = By.cssSelector("input[placeholder='* Адрес: куда привезти заказ']");
     protected final By inputMetro = By.cssSelector("input[placeholder='* Станция метро']");
     protected final By inputPhoneNumber = By.cssSelector("input[placeholder='* Телефон: на него позвонит курьер']");
-    protected final By buttonNext = By.cssSelector("button[class*=Button_Middle]");*/
+    protected final By buttonNext = By.cssSelector("button[class*=Button_Middle]");
 
-
-    public MainPage(WebDriver driver) {
+    public OrderPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public void openMainPage() {
-        driver.get(EnvConfig.BASE_URL);
-
-    }
-    public MainPage clickOrderButton(String button){
-        new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(button)));
-        driver.findElement(By.cssSelector(button)).click();
-        return this;
-    }
-
-    public void acceptCookies() {
-        waitForCookiesFloater();
-        driver.findElement(cookieButton).click();
-        waitForCookiesFloaterToDisappear();
-
-    }
-
-    private void waitForCookiesFloater() {
-        new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
-                .until(ExpectedConditions.visibilityOfElementLocated(cookieButton));
-    }
-
-    private void waitForCookiesFloaterToDisappear() {
-        new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
-                .until(ExpectedConditions.invisibilityOfElementLocated(cookieButton));
-    }
-
-/*    public void fillOrderForm(String name, String surname, String address, String metro, String phoneNumber){
-            waitOrderForm();
-            fillName(name);
-            fillSurname(surname);
-            fillAddress(address);
-            fillMetro(metro);
-            fillPhoneNumber(phoneNumber);
+    public void fillOrderForm(String name, String surname, String address, String metro, String phoneNumber){
+        waitOrderForm();
+        fillName(name);
+        fillSurname(surname);
+        fillAddress(address);
+        fillMetro(metro);
+        fillPhoneNumber(phoneNumber);
 
     }
     public void clickButtonNext(){
@@ -95,6 +62,5 @@ public class MainPage {
     private void fillSurname(String surname){
         driver.findElement(inputSurname).sendKeys(surname);
 
-    }*/
-
+    }
 }
