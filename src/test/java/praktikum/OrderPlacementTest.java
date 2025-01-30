@@ -21,7 +21,7 @@ public class OrderPlacementTest {
 
 
 
-    public OrderPlacementTest(String orderButton, String name, String surname, String address, String phoneNumber, String metro) {
+    public OrderPlacementTest(String orderButton, String name, String surname, String address, String metro, String phoneNumber) {
 
         this.orderButton = orderButton;
         this.name = name;
