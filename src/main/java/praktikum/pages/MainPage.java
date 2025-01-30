@@ -31,11 +31,10 @@ public class MainPage {
         driver.get(EnvConfig.BASE_URL);
 
     }
-    public MainPage clickOrderButton(String button){
+    public void clickOrderButton(String button){
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(button)));
         driver.findElement(By.cssSelector(button)).click();
-        return this;
     }
 
     public void acceptCookies() {
