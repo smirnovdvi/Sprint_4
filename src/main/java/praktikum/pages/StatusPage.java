@@ -20,7 +20,7 @@ public class StatusPage {
     }
 
     public void checkNotFoundMessage() {
-        new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.EXPLICIT_WAIT))
+        new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(notFoundImage));
 
         assertTrue(driver.findElement(notFoundImage).isDisplayed());
