@@ -60,12 +60,18 @@ public class MainPage {
             fillName(name);
             fillSurname(surname);
             fillAddress(address);
-            fillPhoneNumber(phoneNumber);
             fillMetro(metro);
+            fillPhoneNumber(phoneNumber);
+
     }
 
     private void fillMetro(String metro) {
+        String metroStationSelector = ".//div[contains(@class, 'Order_Text') and text()='" + metro +"']";
         System.out.println(metro);
+        driver.findElement(inputMetro).click();
+        new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(metroStationSelector)));
+        driver.findElement(By.xpath(metroStationSelector)).click();
     }
 
     private void fillPhoneNumber(String phoneNumber) {

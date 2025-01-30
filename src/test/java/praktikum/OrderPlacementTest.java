@@ -13,20 +13,24 @@ public class OrderPlacementTest {
     @Rule
     public DriverRule driverRule = new DriverRule();
     private final String orderButton;
+    private final String name;
     private final String surname;
     private final String address;
-    private final String phoneNumber;
-    private final String name;
     private final String metro;
+    private final String phoneNumber;
+
+
 
     public OrderPlacementTest(String orderButton, String name, String surname, String address, String phoneNumber, String metro) {
 
         this.orderButton = orderButton;
+        this.name = name;
         this.surname = surname;
         this.address = address;
-        this.phoneNumber = phoneNumber;
-        this.name = name;
         this.metro=metro;
+        this.phoneNumber = phoneNumber;
+
+
 
     }
 
@@ -46,7 +50,7 @@ public class OrderPlacementTest {
         mainPage.openMainPage();
         mainPage.acceptCookies();
         mainPage.clickOrderButton(orderButton);
-        mainPage.fillOrderForm(name, surname,address,metro,phoneNumber);
+        mainPage.fillOrderForm(name, surname, address, metro, phoneNumber);
 
 
     }
