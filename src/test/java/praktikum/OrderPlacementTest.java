@@ -51,6 +51,7 @@ public class OrderPlacementTest {
         mainPage.acceptCookies();
         mainPage.clickOrderButton(orderButton);
         mainPage.fillOrderForm(name, surname, address, metro, phoneNumber);
+        mainPage.clickButtonNext();
 
 
     }

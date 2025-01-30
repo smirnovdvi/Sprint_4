@@ -21,6 +21,7 @@ public class MainPage {
     protected final By inputAddress = By.cssSelector("input[placeholder='* Адрес: куда привезти заказ']");
     protected final By inputMetro = By.cssSelector("input[placeholder='* Станция метро']");
     protected final By inputPhoneNumber = By.cssSelector("input[placeholder='* Телефон: на него позвонит курьер']");
+    protected final By buttonNext = By.cssSelector("button[class*=Button_Middle]");
 
 
     public MainPage(WebDriver driver) {
@@ -64,7 +65,9 @@ public class MainPage {
             fillPhoneNumber(phoneNumber);
 
     }
-
+    public void clickButtonNext(){
+        driver.findElement(buttonNext).click();
+    }
     private void fillMetro(String metro) {
         String metroStationSelector = ".//div[contains(@class, 'Order_Text') and text()='" + metro +"']";
         System.out.println(metro);
