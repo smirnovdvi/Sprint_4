@@ -21,7 +21,7 @@ public class OrderPage {
     public OrderPage(WebDriver driver) {
         this.driver = driver;
     }
-
+    //Заполняем поля формы заказа
     public void fillOrderForm(String name, String surname, String address, String metro, String phoneNumber){
         waitOrderForm();
         fillName(name);
@@ -30,36 +30,38 @@ public class OrderPage {
         fillMetro(metro);
         fillPhoneNumber(phoneNumber);
     }
+    //Нажимаем кнопку "Далее"
     public void clickButtonNext(){
         driver.findElement(buttonNext).click();
     }
+    //Нажимаем на поле выбора станции метро, ожидаем появления списка станций и выбираем нужную нам
     private void fillMetro(String metro) {
         String metroStationSelector = ".//div[contains(@class, 'Order_Text') and text()='" + metro +"']";
-        System.out.println(metro);
         driver.findElement(inputMetro).click();
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(metroStationSelector)));
         driver.findElement(By.xpath(metroStationSelector)).click();
     }
-
+    //Заполняем поле с номером телефона
     private void fillPhoneNumber(String phoneNumber) {
         driver.findElement(inputPhoneNumber).sendKeys(phoneNumber);
     }
-
+    //Заполняем поле адреса
     private void fillAddress(String address) {
         driver.findElement(inputAddress).sendKeys(address);
     }
-
+    //Ожидаем появления формы заказа
     private void waitOrderForm(){
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(orderForm));
     }
+    //Заполняем поле имя
     private void fillName(String name){
         driver.findElement(inputName).sendKeys(name);
 
     }
+    //Заполняем поле фамилии
     private void fillSurname(String surname){
         driver.findElement(inputSurname).sendKeys(surname);
-
     }
 }

@@ -24,7 +24,7 @@ public class RentPage {
     public RentPage(WebDriver driver) {
         this.driver = driver;
     }
-
+    //Заполняем форму аренды
     public void fillRentForm(){
         waitRentForm();
         dateSelection();
@@ -33,41 +33,41 @@ public class RentPage {
         fillComment();
         clickSubmitOrder();
     }
-
+    //Ожидаем модальное окно подтверждения заказа и нажимаем "Да"
     public void confirmOrder() {
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(confirmButton));
         driver.findElement(confirmButton).click();
     }
-
+    //Нажимаем кнопку "Заказать"
     private void clickSubmitOrder() {
         driver.findElement(submitButton).click();
     }
-
+    //Заполняем поле комментария для курьера
     private void fillComment() {
         driver.findElement(inputComment).sendKeys("Жду с нетерпением");
     }
-
+    //Выбираем цвет самоката
     private void selectColor() {
         driver.findElement(collor).click();
     }
-
+    //Выбираем срок аренды самоката
     private void selectRentalPeriod() {
         driver.findElement(orderFilledDate).click();
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(period));
         driver.findElement(period).click();
     }
-
+    //Заполняем поле даты доставки
     private void dateSelection() {
         driver.findElement(inputDate).sendKeys("01.05.2025" + Keys.ENTER);
     }
-
+    //Ожидаем появления формы аренды
     private void waitRentForm() {
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(rentForm));
     }
-
+    //Ожидаем модалку подтверждающую оформления заказа
     public void checkOrder() {
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(checkOrder));

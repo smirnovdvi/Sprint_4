@@ -9,8 +9,10 @@ import praktikum.pages.FaqPage;
 
 @RunWith(Parameterized.class)
 public class FaqTest {
+
     private final String itemId;
     private final String answerText ;
+
     @ClassRule
     public static DriverRule driverRule = new DriverRule();
 
@@ -35,13 +37,18 @@ public class FaqTest {
                 {"2", "Допустим, вы оформляете заказ на 8 мая. Мы привозим самокат 8 мая в течение дня. Отсчёт времени аренды начинается с момента, когда вы оплатите заказ курьеру. Если мы привезли самокат 8 мая в 20:30, суточная аренда закончится 9 мая в 20:30."},
         };
     }
-
+    //Тест прокликивает "Вопросы о важном" и проверяет на соответствие ответов ожидаемому тексту
     @Test
     public void clickOnFaqItem() {
+        //Запускаем главную страницу
         new FaqPage(driverRule.getDriver())
+                //Проверяем что ответы на вопросы скрыты
                 .checkAnswerIsInvisible(itemId)
+                //Кликаем на нужный вопрос
                 .clickOnQuestion(itemId)
+                //Ожидаем ответ
                 .waitForAnswer(itemId)
+                //Проверяем ответ на соответствие ожидаемому
                 .checkCorrectText(itemId,answerText);
     }
 }

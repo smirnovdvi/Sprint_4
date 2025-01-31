@@ -9,7 +9,6 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 import java.time.Duration;
 
-
 public class DriverRule extends ExternalResource {
     private WebDriver driver;
 
