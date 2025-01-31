@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import praktikum.pages.MainPage;
 import praktikum.pages.OrderPage;
+import praktikum.pages.RentPage;
 
 @RunWith(Parameterized.class)
 public class OrderPlacementTest {
@@ -47,14 +48,15 @@ public class OrderPlacementTest {
     public void OrderPlacement() {
 
         var mainPage = new MainPage(driverRule.getDriver());
-        System.out.println(orderButton + name + surname + address + metro + phoneNumber);
         mainPage.openMainPage();
         mainPage.acceptCookies();
         mainPage.clickOrderButton(orderButton);
         var orderPage = new OrderPage(driverRule.getDriver());
         orderPage.fillOrderForm(name, surname, address, metro, phoneNumber);
         orderPage.clickButtonNext();
-
-
+        var rentPage = new RentPage(driverRule.getDriver());
+        rentPage.fillRentForm();
+        rentPage.confirmOrder();
+        rentPage.checkOrder();
     }
 }

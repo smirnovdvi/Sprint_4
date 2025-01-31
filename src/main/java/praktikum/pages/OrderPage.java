@@ -29,7 +29,6 @@ public class OrderPage {
         fillAddress(address);
         fillMetro(metro);
         fillPhoneNumber(phoneNumber);
-
     }
     public void clickButtonNext(){
         driver.findElement(buttonNext).click();
